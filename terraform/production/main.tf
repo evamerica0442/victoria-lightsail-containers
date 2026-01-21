@@ -33,12 +33,9 @@ terraform {
 
 provider "aws" {
   region = var.aws_region
-
-  # Ignore AWS auto-applied tags that cause inconsistent plan errors
-  ignore_tags {
-    keys = ["CreatedDate", "ManagedBy", "Project"]
-  }
 }
+  # Ignore AWS auto-applied tags that cause inconsistent plan errors
+ 
 
 # ============================================================================
 # Base Module - Shared Infrastructure
