@@ -34,6 +34,7 @@ variable "whatsapp_number" {
 variable "ecr_repository_url" {
   description = "ECR repository URL for bot images"
   type        = string
+  default = "https://851459781794.dkr.ecr.us-east-1.amazonaws.com/victoria-saas-bot"
 }
 
 # ========================================
