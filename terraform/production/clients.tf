@@ -178,3 +178,75 @@ output "client_marys_seafood_credentials" {
 # ============================================================================
 
 # Your clients here...
+# ============================================================================
+# EXAMPLE CLIENT 2: Mary's Seafood
+# ============================================================================
+# Copy the structure above and modify for each new client
+
+module "client_marys_seafood" {
+  source = "../../modules/client"
+
+  client_id       = "marys-seafood"
+  client_name     = "Mary's Seafood Emporium"
+  whatsapp_number = "+2784053481"
+
+  ecr_repository_url = module.base.ecr_repository_url
+  power_plan         = "micro"
+  scale              = 1
+  tier               = "premium"
+
+  menu_items = {
+    "1" = { name = "Lobster Tails (2)", price = 299.99 }
+    "2" = { name = "Oysters (Dozen)", price = 189.99 }
+    "3" = { name = "Sushi Platter", price = 249.99 }
+    "4" = { name = "Grilled Fish", price = 149.99 }
+  }
+
+  business_hours = {
+    open  = "10:00"
+    close = "22:00"
+  }
+
+  delivery_areas = [
+    "Constantia",
+    "Claremont",
+    "Newlands",
+    "Rondebosch"
+  ]
+
+  currency = "ZAR"
+
+  enable_orders             = true
+  enable_payments           = false
+  enable_cloudwatch_logs    = true
+  store_credentials_in_ssm  = true
+
+  project_name = var.project_name
+  environment  = var.environment
+
+  tags = {
+    Tier        = "premium"
+    Owner       = "Mary Johnson"
+    ContactEmail = "mary@marysseafood.co.za"
+  }
+}
+
+output "client_marys_seafood" {
+  description = "Mary's Seafood connection details"
+  value = {
+    service_url     = module.client_marys_seafood.service_url
+    waha_dashboard  = module.client_marys_seafood.waha_dashboard_url
+    client_info     = module.client_marys_seafood.client_info
+  }
+  sensitive = false
+}
+
+output "client_marys_seafood_credentials" {
+  description = "Mary's Seafood credentials (SENSITIVE)"
+  value = {
+    waha_api_key   = module.client_marys_seafood.waha_api_key
+    db_password    = module.client_marys_seafood.db_password
+    webhook_secret = module.client_marys_seafood.webhook_secret
+  }
+  sensitive = true
+}
