@@ -191,7 +191,7 @@ module "client_marys_seafood" {
   whatsapp_number = "+2784053481"
 
   ecr_repository_url = module.base.ecr_repository_url
-  power_plan         = "micro"
+  power_plan         = "small"
   scale              = 1
   tier               = "premium"
 
