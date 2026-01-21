@@ -184,7 +184,7 @@ output "client_marys_seafood_credentials" {
 # Copy the structure above and modify for each new client
 
 module "client_marys_seafood" {
-  source = "../../modules/client"
+  source = "../modules/client"
 
   client_id       = "marys-seafood"
   client_name     = "Mary's Seafood Emporium"
