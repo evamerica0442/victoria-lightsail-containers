@@ -49,7 +49,7 @@ provider "aws" {
 # ============================================================================
 
 module "base" {
-  source = "../../modules/base"
+  source = "../modules/base"
 
   project_name         = var.project_name
   aws_region           = var.aws_region
