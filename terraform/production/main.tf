@@ -34,13 +34,9 @@ terraform {
 provider "aws" {
   region = var.aws_region
 
-  default_tags {
-    tags = {
-      Project     = var.project_name
-      Environment = var.environment
-      ManagedBy   = "terraform"
-      CreatedDate = timestamp()
-    }
+  # Ignore AWS auto-applied tags that cause inconsistent plan errors
+  ignore_tags {
+    keys = ["CreatedDate", "ManagedBy", "Project"]
   }
 }
 
