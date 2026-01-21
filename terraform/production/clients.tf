@@ -187,7 +187,7 @@ module "client_marys_seafood" {
   source = "../modules/client"
 
   client_id       = "marys-seafood"
-  client_name     = "Mary's Seafood Emporium"
+  client_name     = "Marys Seafood Emporium"
   whatsapp_number = "+2784053481"
 
   ecr_repository_url = module.base.ecr_repository_url
@@ -232,7 +232,7 @@ module "client_marys_seafood" {
 }
 
 output "client_marys_seafood" {
-  description = "Mary's Seafood connection details"
+  description = "Marys Seafood connection details"
   value = {
     service_url     = module.client_marys_seafood.service_url
     waha_dashboard  = module.client_marys_seafood.waha_dashboard_url
@@ -242,7 +242,7 @@ output "client_marys_seafood" {
 }
 
 output "client_marys_seafood_credentials" {
-  description = "Mary's Seafood credentials (SENSITIVE)"
+  description = "Marys Seafood credentials (SENSITIVE)"
   value = {
     waha_api_key   = module.client_marys_seafood.waha_api_key
     db_password    = module.client_marys_seafood.db_password
